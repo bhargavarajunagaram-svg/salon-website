@@ -1,0 +1,72 @@
+/* This file contains responsive styles for the salon shop website. */
+
+@media (max-width: 1200px) {
+    /* Styles for tablets and smaller devices */
+    body {
+        font-size: 16px;
+    }
+
+    .header {
+        padding: 10px;
+    }
+
+    .footer {
+        padding: 20px;
+    }
+
+    .service-card {
+        flex-direction: column;
+        margin: 10px 0;
+    }
+
+    .responsive-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Styles for mobile devices */
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links by default */
+    }
+
+    .nav-toggle {
+        display: block; /* Show toggle button */
+    }
+
+    .nav-active {
+        display: block; /* Show nav links when active */
+    }
+
+    .contact-form {
+        flex-direction: column;
+    }
+
+    .blog-post {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Styles for very small devices */
+    body {
+        font-size: 14px;
+    }
+
+    .header, .footer {
+        text-align: center;
+    }
+
+    .service-card {
+        padding: 10px;
+    }
+
+    .blog-title {
+        font-size: 1.5em;
+    }
+}
