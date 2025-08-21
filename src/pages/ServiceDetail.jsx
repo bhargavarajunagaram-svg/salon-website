@@ -86,7 +86,7 @@ const ServiceDetail = () => {
   if (!service) {
     return (
       <div className="not-found">
-        <div className="container">
+        <div className="not-found-content">
           <h2>Service Not Found</h2>
           <p>The service you're looking for doesn't exist.</p>
           <Link to="/services" className="back-button">Back to Services</Link>
@@ -126,7 +126,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* Main Content */}
-      <div className="service-container">
+      <div className="service-content">
         {/* Service Overview */}
         <section className="service-overview">
           <div className="service-image">
@@ -322,15 +322,22 @@ const ServiceDetail = () => {
       </div>
 
       <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
         .service-detail-page {
           width: 100%;
           min-height: 100vh;
+          overflow-x: hidden;
         }
         
         /* Hero Section */
         .service-hero {
           position: relative;
-          width: 100%;
+          width: 100vw;
           height: 60vh;
           background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${service.img});
           background-size: cover;
@@ -341,6 +348,15 @@ const ServiceDetail = () => {
           text-align: center;
           color: white;
           margin-bottom: 3rem;
+        }
+        
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(24, 24, 74, 0.8) 0%, rgba(194, 24, 91, 0.6) 100%);
         }
         
         .hero-content {
@@ -395,11 +411,13 @@ const ServiceDetail = () => {
           color: #18184a;
         }
         
-        /* Main Container */
-        .service-container {
-          max-width: 1200px;
-          margin: 0 auto;
+        /* Main Content */
+        .service-content {
+          width: 100%;
           padding: 0 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         
         /* Service Overview */
@@ -408,6 +426,8 @@ const ServiceDetail = () => {
           gap: 3rem;
           margin-bottom: 4rem;
           align-items: flex-start;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .service-image {
@@ -461,6 +481,8 @@ const ServiceDetail = () => {
         /* Service Tabs */
         .service-tabs {
           margin-bottom: 4rem;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .tab-buttons {
@@ -561,6 +583,8 @@ const ServiceDetail = () => {
           border-radius: 20px;
           padding: 3rem;
           margin-bottom: 4rem;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .booking-container {
@@ -579,7 +603,7 @@ const ServiceDetail = () => {
         }
         
         .booking-content p {
-          color: #555;
+          color: 555;
           margin-bottom: 2rem;
         }
         
@@ -671,6 +695,8 @@ const ServiceDetail = () => {
         /* Related Services */
         .related-services {
           margin-bottom: 4rem;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .related-services h2 {
@@ -757,6 +783,12 @@ const ServiceDetail = () => {
           align-items: center;
           min-height: 60vh;
           text-align: center;
+          width: 100%;
+        }
+        
+        .not-found-content {
+          max-width: 600px;
+          padding: 2rem;
         }
         
         .not-found h2 {
@@ -784,25 +816,19 @@ const ServiceDetail = () => {
           
           .service-highlights {
             grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-          width: 100%;
-          margin-top: 2rem;
-          order: 2;
-          max-width: 100%;
-          margin-left: 0;
-        }
-          
-          .service-image {
-            order: 1;
+            gap: 1rem;
+            width: 100%;
+            margin-top: 2rem;
           }
           
           .tab-buttons {
-            flex-direction: column;
+            flex-wrap: wrap;
           }
           
           .tab-buttons button {
-            width: 100%;
-            text-align: left;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
           }
           
           .form-row {
@@ -815,7 +841,7 @@ const ServiceDetail = () => {
             font-size: 2.5rem;
           }
           
-          .service-container {
+          .service-content {
             padding: 0 1.5rem;
           }
           
@@ -853,10 +879,12 @@ const ServiceDetail = () => {
           
           .booking-summary {
             padding: 1.5rem;
-          margin-top: 2rem;
-          width: 100%;
-          max-width: 100%;
-          margin-left: 0;
+          }
+          
+          .tab-buttons button {
+            padding: 0.8rem 1rem;
+            font-size: 0.9rem;
+          }
         }
       `}</style>
     </div>

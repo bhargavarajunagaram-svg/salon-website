@@ -98,8 +98,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Main Content Container */}
-      <div className="services-container">
+      {/* Main Content */}
+      <div className="services-content">
         
         {/* Category Filter */}
         <section className="category-filter">
@@ -137,15 +137,7 @@ const Services = () => {
                   <div className="service-actions">
                     <Link to={`/services/${service.id}`} className="service-details-btn">View Details</Link>
                     <button
-                      style={{
-                        background: "#1976d2",
-                        color: "#fff",
-                        padding: "0.6rem 1.2rem",
-                        borderRadius: "6px",
-                        border: "none",
-                        fontWeight: "bold",
-                        cursor: "pointer"
-                      }}
+                      className="book-now-btn"
                       onClick={() => window.location.href = "/book"}
                     >
                       Book Now
@@ -161,7 +153,7 @@ const Services = () => {
         <section className="services-section premium-services">
           <h2 className="section-title">Signature Treatments</h2>
           <div className="premium-grid">
-            {services.filter(s => s.price > "₹1000").map(service => (
+            {services.filter(s => parseInt(s.price.replace('₹', '')) > 1000).map(service => (
               <div key={service.id} className="premium-card">
                 <div className="premium-content">
                   <h3>{service.name}</h3>
@@ -258,15 +250,22 @@ const Services = () => {
       </div>
 
       <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
         .services-page {
           width: 100%;
           min-height: 100vh;
+          overflow-x: hidden;
         }
         
         /* Hero Section */
         .services-hero {
           position: relative;
-          width: 100%;
+          width: 100vw;
           height: 60vh;
           background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${heroBg});
           background-size: cover;
@@ -277,6 +276,22 @@ const Services = () => {
           text-align: center;
           color: white;
           margin-bottom: 3rem;
+        }
+        
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(24, 24, 74, 0.8) 0%, rgba(194, 24, 91, 0.6) 100%);
+        }
+        
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 800px;
+          padding: 0 2rem;
         }
         
         .hero-content h1 {
@@ -291,11 +306,13 @@ const Services = () => {
           margin: 0 auto;
         }
         
-        /* Main Container */
-        .services-container {
-          max-width: 1200px;
-          margin: 0 auto;
+        /* Main Content */
+        .services-content {
+          width: 100%;
           padding: 0 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         
         /* Section Titles */
@@ -312,6 +329,8 @@ const Services = () => {
         .category-filter {
           margin-bottom: 3rem;
           text-align: center;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .category-buttons {
@@ -340,6 +359,12 @@ const Services = () => {
         }
         
         /* Services Grid */
+        .services-section {
+          width: 100%;
+          max-width: 1200px;
+          margin-bottom: 4rem;
+        }
+        
         .services-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -549,6 +574,8 @@ const Services = () => {
           border-radius: 20px;
           padding: 3rem;
           margin-bottom: 4rem;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .booking-container {
@@ -643,6 +670,8 @@ const Services = () => {
           padding: 4rem 2rem;
           border-radius: 20px;
           margin-bottom: 3rem;
+          width: 100%;
+          max-width: 1200px;
         }
         
         .cta-content h2 {
@@ -702,7 +731,7 @@ const Services = () => {
             font-size: 2rem;
           }
           
-          .services-container {
+          .services-content {
             padding: 0 1.5rem;
           }
           

@@ -111,26 +111,11 @@ const BlogDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
     return () => clearTimeout(timer);
   }, [id]);
-
-  if (!blog) {
-    return (
-      <div className="blog-detail-container">
-        <div className="blog-not-found">
-          <h2>Blog Not Found</h2>
-          <p>The article you're looking for doesn't exist.</p>
-          <Link to="/blog" className="back-button">
-            {/* <ArrowBack /> */} ← Back to Blog
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   if (isLoading) {
     return (
@@ -143,7 +128,20 @@ const BlogDetail = () => {
     );
   }
 
-  // Get related posts (excluding current post)
+  if (!blog) {
+    return (
+      <div className="blog-detail-container">
+        <div className="blog-not-found">
+          <h2>Blog Not Found</h2>
+          <p>The article you're looking for doesn't exist.</p>
+          <Link to="/blog" className="back-button">
+            ← Back to Blog
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   const relatedPosts = Object.entries(blogData)
     .filter(([key]) => key !== id)
     .slice(0, 3);
@@ -154,12 +152,11 @@ const BlogDetail = () => {
         <div className="blog-hero">
           <div className="blog-hero-image">
             <img src={blog.image} alt={blog.title} />
-            <div className="image-overlay"></div>
           </div>
           
           <div className="blog-header-content">
             <Link to="/blog" className="back-button">
-              {/* <ArrowBack /> */} ← Back to All Articles
+              ← Back to All Articles
             </Link>
             
             <div className="blog-meta">
@@ -202,13 +199,13 @@ const BlogDetail = () => {
                 <h3>Share this article</h3>
                 <div className="share-buttons">
                   <button className="share-btn facebook">
-                    {/* <Facebook /> */} 👍 Facebook
+                    👍 Facebook
                   </button>
                   <button className="share-btn twitter">
-                    {/* <Twitter /> */} 🐦 Twitter
+                    🐦 Twitter
                   </button>
                   <button className="share-btn linkedin">
-                    {/* <LinkedIn /> */} 💼 LinkedIn
+                    💼 LinkedIn
                   </button>
                 </div>
               </div>
@@ -222,9 +219,9 @@ const BlogDetail = () => {
                   <h4>{blog.author}</h4>
                   <p>Senior Stylist with 8+ years of experience specializing in {blog.category.toLowerCase()}.</p>
                   <div className="author-social">
-                    <a href="#"> {/* <Instagram /> */} 📸 </a>
-<a href="#"> {/* <Twitter /> */} 🐦 </a>
-<a href="#"> {/* <Facebook /> */} 👍 </a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">👍</a>
                   </div>
                 </div>
               </div>
@@ -268,6 +265,12 @@ const BlogDetail = () => {
       </section>
 
       <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
         .blog-detail-container {
           width: 100%;
           min-height: 100vh;
@@ -312,38 +315,53 @@ const BlogDetail = () => {
         .blog-not-found h2 {
           color: #18184a;
           margin-bottom: 1rem;
+          font-size: 2rem;
         }
         
         .blog-not-found p {
           color: #636e72;
           margin-bottom: 2rem;
+          font-size: 1.1rem;
         }
         
-        /* Blog Hero Section */
+        .blog-not-found .back-button {
+          display: inline-block;
+          background: #c2185b;
+          color: white;
+          padding: 0.8rem 1.5rem;
+          border-radius: 5px;
+          text-decoration: none;
+          font-weight: 500;
+          transition: background 0.3s;
+        }
+        
+        .blog-not-found .back-button:hover {
+          background: #a4134c;
+        }
+        
+        /* Blog Hero Section - Fixed for full width */
         .blog-hero {
           position: relative;
           margin-bottom: 3rem;
+          width: 100vw;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
         }
         
         .blog-hero-image {
           position: relative;
           height: 70vh;
           overflow: hidden;
+          width: 100%;
         }
         
         .blog-hero-image img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-        }
-        
-        .image-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+          display: block;
         }
         
         .blog-header-content {

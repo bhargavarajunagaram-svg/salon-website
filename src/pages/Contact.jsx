@@ -37,7 +37,7 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      {/* Hero Section */}
+      {/* Hero Section - Fixed for full width */}
       <section className="contact-hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -247,15 +247,26 @@ const Contact = () => {
       </section>
 
       <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
         .contact-page {
           width: 100%;
           min-height: 100vh;
           background: #f8f9fa;
         }
 
+        /* Hero Section - Fixed for full width */
         .contact-hero {
           position: relative;
-          width: 100%;
+          width: 100vw;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
           height: 60vh;
           background: linear-gradient(rgba(24, 24, 74, 0.7), rgba(194, 24, 91, 0.7)), url(https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1600&q=80);
           background-size: cover;
@@ -564,7 +575,7 @@ const Contact = () => {
           }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
           .contact-main {
             padding: 3rem 1rem;
           }
@@ -575,7 +586,26 @@ const Contact = () => {
           }
 
           .hero-content h1 {
+            font-size: 2.5rem;
+          }
+          
+          .hero-content p {
+            font-size: 1.1rem;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .hero-content h1 {
             font-size: 2rem;
+          }
+          
+          .contact-method {
+            flex-direction: column;
+            text-align: center;
+          }
+          
+          .method-icon {
+            align-self: center;
           }
         }
       `}</style>

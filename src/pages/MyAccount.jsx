@@ -721,12 +721,14 @@ const Account = () => {
           width: 100%;
           min-height: 100vh;
           background: #fafafa;
+          margin: 0;
+          padding: 0;
         }
         
         /* Hero Section */
         .account-hero {
           width: 100%;
-          padding: 4rem 2rem;
+          padding: 4rem 0;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           display: flex;
           align-items: center;
@@ -749,14 +751,26 @@ const Account = () => {
         
         /* Main Container */
         .account-container {
-          max-width: 1000px;
+          width: 100%;
           margin: 0 auto;
-          padding: 0 2rem 4rem;
+          padding: 0 0 4rem;
+          min-height: 100vh;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          background: linear-gradient(135deg, #f7f7f7 0%, #e8e8e8 100%);
+          width: 100vw;
+          box-sizing: border-box;
         }
         
         .account-content {
           display: flex;
-          justify-content: center;
+          flex-direction: column;
+          gap: 2rem;
+          max-width: 1200px;
+          width: 100vw;
+          margin: 0; /* Remove margin */
+          padding: 0; /* Remove padding */
         }
         
         /* Account Forms */
@@ -771,6 +785,7 @@ const Account = () => {
           border-radius: 16px;
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
           width: 100%;
+          margin: 0 auto;
         }
         
         .form-header {
@@ -1200,7 +1215,8 @@ const Account = () => {
           cursor: pointer;
           transition: all 0.2s ease;
         }
-          reschedule-btn:hover {
+        
+        .reschedule-btn:hover {
           background: #667eea;
           color: white;
         }
@@ -1215,9 +1231,7 @@ const Account = () => {
           margin-bottom: 1.5rem;
           font-size: 1.1rem;
         }
-        
-        .cta-button {
-          display: inline-block;
+                  .cta-button {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           padding: 0.75rem 1.5rem;
@@ -1225,7 +1239,7 @@ const Account = () => {
           text-decoration: none;
           font-weight: 600;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+          display: inline-block;
         }
         
         .cta-button:hover {
@@ -1243,19 +1257,20 @@ const Account = () => {
             font-size: 2.2rem;
           }
           
-          .account-container {
-            padding: 0 1rem 2rem;
+          .hero-content p {
+            font-size: 1.1rem;
           }
           
           .auth-form {
             padding: 2rem 1.5rem;
+            margin: 0 1rem;
           }
           
           .profile-header {
             flex-direction: column;
             gap: 1rem;
-            text-align: center;
             padding: 1.5rem;
+            text-align: center;
           }
           
           .user-info {
@@ -1283,32 +1298,29 @@ const Account = () => {
             gap: 1rem;
           }
           
-          .booking-actions {
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            justify-content: space-between;
-          }
-          
+          body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+        }
+        
+        @media (max-width: 480px) {
           .form-options {
             flex-direction: column;
             align-items: flex-start;
             gap: 1rem;
           }
-        }
-        
-        @media (max-width: 480px) {
-          .hero-content h1 {
-            font-size: 1.8rem;
-          }
           
-          .auth-form {
-            padding: 1.5rem 1rem;
+          .profile-tabs {
+            flex-direction: column;
           }
           
           .tab {
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
+            width: 100%;
+            text-align: center;
           }
         }
       `}</style>

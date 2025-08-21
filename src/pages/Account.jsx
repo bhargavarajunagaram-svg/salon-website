@@ -421,22 +421,33 @@ const Account = () => {
       </div>
       <style jsx>{`
         .account-container {
-          min-height: 80vh;
+          min-height: 100vh;
           display: flex;
           align-items: flex-start;
           justify-content: center;
           background: linear-gradient(135deg, #f7f7f7 0%, #e8e8e8 100%);
-          width: 100%;
+          width: 100vw;
           box-sizing: border-box;
-          padding: 2rem 1rem;
+          padding: 0; /* Remove padding */
+          margin: 0;  /* Remove margin */
         }
-        
+
         .account-content {
           display: flex;
           flex-direction: column;
           gap: 2rem;
           max-width: 1200px;
-          width: 100%;
+          width: 100vw;
+          margin: 0; /* Remove margin */
+          padding: 0; /* Remove padding */
+        }
+
+        body, html {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          width: 100vw;
+          overflow-x: hidden;
         }
         
         .account-title {

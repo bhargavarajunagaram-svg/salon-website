@@ -104,7 +104,7 @@ const Booking = () => {
 
   return (
     <div className="booking-page">
-      {/* Hero Section */}
+      {/* Hero Section - Fixed for full width */}
       <section className="booking-hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -325,15 +325,25 @@ const Booking = () => {
       </div>
 
       <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
         .booking-page {
           width: 100%;
           min-height: 100vh;
         }
         
-        /* Hero Section */
+        /* Hero Section - Fixed for full width */
         .booking-hero {
           position: relative;
-          width: 100%;
+          width: 100vw;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
           height: 50vh;
           background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${heroBg});
           background-size: cover;
@@ -344,6 +354,22 @@ const Booking = () => {
           text-align: center;
           color: white;
           margin-bottom: 3rem;
+        }
+        
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(24, 24, 74, 0.8) 0%, rgba(194, 24, 91, 0.6) 100%);
+        }
+        
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 800px;
+          padding: 0 2rem;
         }
         
         .hero-content h1 {
